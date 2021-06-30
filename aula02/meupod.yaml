@@ -1,0 +1,13 @@
+# Não é necessário ter um arquivo de Pods
+# As specs já estão declaradas no meudeployment.yaml!
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: meupod
+spec:
+  containers:
+    - name: site
+      image: kubedevio/nginx-color:blue
+      ports:
+        - containerPort: 80
