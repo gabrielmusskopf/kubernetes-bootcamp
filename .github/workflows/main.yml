@@ -52,4 +52,17 @@ jobs:
         with:
           method: kubeconfig
           kubeconfig: ${{ secrets.K8S_CONFIG }}
-      
+
+      - name: Deploy to Kubernetes cluster
+        uses: Azure/k8s-deploy@v1
+        with:
+          manifests: |
+            aula03/rotten-potatoes/k8s/mongodb/deployment.yml
+            aula03/rotten-potatoes/k8s/mongodb/service.yml
+            
+      - name: Deploy to Kubernetes cluster
+        uses: Azure/k8s-deploy@v1
+        with:
+          manifests: |
+            aula03/rotten-potatoes/k8s/web/deployment.yml
+          images: gabrielmusskopf/rotten-potatoes:${{ github.run_number }}
